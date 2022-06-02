@@ -1,22 +1,9 @@
 function processData(input) {
     //Enter your code here
-    var inputArr = input.split('\n'),
-        actual = inputArr[0].split(' '),
-        expected = inputArr[1].split(' '),
-        month = 1,
-        day = 0,
-        year = 2,
-        fine = 0;
-        
-    if (actual[year] > expected[year]) {
-        fine = 10000;
-    } else if (actual[month] > expected[month]) {
-        fine = 500 * (actual[month] - expected[month]);
-    } else if (actual[day] > expected[day]) {
-        fine = 15 * (actual[day] - expected[day]);
-    }
-    
-    console.log(fine);
+    const [d1,m1,y1,d2,m2,y2] = input.split(/\s/).map(Number);
+    if (y1 !== y2) console.log(y1 > y2 ? 10000 : 0);
+    else if(m1 !== m2) console.log(m1 > m2 ? (m1 - m2) * 500 : 0);
+    else console.log(d1 > d2 ? (d1 - d2) * 15 : 0);
 } 
 
 process.stdin.resume();
